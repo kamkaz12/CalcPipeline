@@ -27,6 +27,7 @@ node {
         }
     }
     catch(Exception ex){
+        currentBuild.result = 'FAILURE'
 
     }
     finally {
