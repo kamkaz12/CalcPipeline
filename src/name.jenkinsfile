@@ -21,11 +21,17 @@ node {
         build job: 'MsBuild2015', parameters: [string(name: 'path', value: absolutePathToSlnFile), string(name: 'target', value: 'Build')]
     }
 
-    stage('Tests'){
-        build job: 'VsTestConsole', parameters: [string(name: 'path', value: absolutePathToTests)]
+    try {
+        stage('Tests') {
+            build job: 'VsTestConsole', parameters: [string(name: 'path', value: absolutePathToTests)]
+        }
     }
+    catch(Exception ex){
 
-    stage('Clean Workspace'){
-        cleanWs()
+    }
+    finally {
+        stage('Clean Workspace') {
+            cleanWs()
+        }
     }
 }
