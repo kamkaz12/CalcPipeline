@@ -1,7 +1,7 @@
 node {
 
     def urlToGitHub = "https://github.com/kamkaz12/Calc.git"
-    def absolutePathToWorkspace = pwd ()
+    def absolutePathToWorkspace = pwd()
     def absolutePathToSlnFile = absolutePathToWorkspace + "/calc.sln"
     def absolutePathToTests = absolutePathToWorkspace + "/CalcTests1/bin/Debug/CalcTests1.dll"
 
@@ -25,7 +25,7 @@ node {
         build job: 'VsTestConsole', parameters: [string(name: 'path', value: absolutePathToTests)]
     }
 
-    stage('Clean Workspace'){
+/*    stage('Clean Workspace'){
         cleanWs()
-    }
+    }*/
 }
