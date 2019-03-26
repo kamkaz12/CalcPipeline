@@ -14,7 +14,7 @@ node {
             build job: 'NugetRestore', parameters: [string(name: 'path', value: absolutePathToSlnFile)]
         }
 
-        stage('MsBuild - Clean'){
+/*        stage('MsBuild - Clean'){
             build job: 'MsBuild2015', parameters: [string(name: 'path', value: absolutePathToSlnFile), string(name: 'target', value: 'Clean')]
         }
 
@@ -24,7 +24,7 @@ node {
 
         stage('Tests') {
             build job: 'VsTestConsole', parameters: [string(name: 'path', value: absolutePathToTests)]
-        }
+        }*/
     }
 
     catch(Exception ex){
