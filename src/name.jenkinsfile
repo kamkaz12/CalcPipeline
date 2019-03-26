@@ -10,7 +10,5 @@ node {
         build job: 'NugetRestore', parameters: [string(name: 'path', value: pathToSlnFile )]build job: 'NugetRestore', parameters: [string(name: 'path', value: pathToSlnFile)]
     }
 
-    stage('End of pipeline'){
-        echo 'End pipeline'
-    }
+
 }
