@@ -1,6 +1,6 @@
 node {
     stage('Run MainPipeline') {
         echo 'Running MainPipeline'
-        def job = build job: 'MainPipeline'
+        def job = build job: 'MainJob'
     }
 }
