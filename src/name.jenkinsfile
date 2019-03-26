@@ -1,11 +1,12 @@
 node {
 
-    def absolutePathToWorkspace = pwd ()
-    def absolutePathToSlnFile = absolutePathToWorkspace + "/calc.sln"
-    def absolutePathToTests = absolutePathToWorkspace + "/CalcTests1/bin/Debug/CalcTests1.dll"
+    String urlToGitHub = "https://github.com/kamkaz12/Calc.git"
+    String absolutePathToWorkspace = pwd ()
+    String absolutePathToSlnFile = absolutePathToWorkspace + "/calc.sln"
+    String absolutePathToTests = absolutePathToWorkspace + "/CalcTests1/bin/Debug/CalcTests1.dll"
 
     stage('Connect to GIT') {
-        git 'https://github.com/kamkaz12/Calc.git'
+        git urlToGitHub
     }
 
     stage('Create Nuget Restore'){
