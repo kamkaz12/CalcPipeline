@@ -7,7 +7,7 @@ node {
     }
 
     stage('Create Nuget Restore'){
-        build job: 'NugetRestore', parameters: [string(name: 'path', value: pathToSlnFile )]build job: 'NugetRestore', parameters: [string(name: 'path', value: pathToSlnFile)]
+        build job: 'NugetRestore', parameters: [string(name: 'path', value: ${pathToSlnFile} )]build job: 'NugetRestore', parameters: [string(name: 'path', value: ${pathToSlnFile})]
     }
 
 
