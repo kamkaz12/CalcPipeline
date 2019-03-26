@@ -1,14 +1,9 @@
 node {
-
-    String pathToSlnFile = "C:\\Users\\mariusz.drobot\\Desktop\\cloneRepo\\Calc\\calc.sln"
-
     stage('Connect to GIT') {
         git 'https://github.com/kamkaz12/Calc.git'
     }
 
     stage('Create Nuget Restore'){
-        build job: 'NugetRestore', parameters: [string(name: 'path', value: ${pathToSlnFile} )]build job: 'NugetRestore', parameters: [string(name: 'path', value: ${pathToSlnFile})]
+        build job: 'NugetRestore', parameters: [string(name: 'path', value: 'C:\\Users\\mariusz.drobot\\Desktop\\cloneRepo\\Calc\\calc.sln')]build job: 'NugetRestore', parameters: [string(name: 'path', value: 'C:\\Users\\mariusz.drobot\\Desktop\\cloneRepo\\Calc\\calc.sln')]
     }
-
-
 }
