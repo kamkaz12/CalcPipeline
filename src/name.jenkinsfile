@@ -4,6 +4,6 @@ node {
     }
 
     stage('Create Nuget Restore'){
-        build job: 'NugetRestore', parameters: [string(name: 'path', value: 'C:\\Users\\mariusz.drobot\\Desktop\\cloneRepo\\Calc\\calc.sln')]build job: 'NugetRestore', parameters: [string(name: 'path', value: 'C:\\Users\\mariusz.drobot\\Desktop\\cloneRepo\\Calc\\calc.sln')]
+        build job: 'NugetRestore', parameters: [string(name: 'path', value: ''${WORKSPACE}\\calc.sln')]build job: 'NugetRestore', parameters: [string(name: 'path', value: ''${WORKSPACE}\\calc.sln')]
     }
 }
