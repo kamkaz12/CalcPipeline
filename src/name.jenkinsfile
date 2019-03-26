@@ -1,35 +1,36 @@
 node {
 
-    def urlToGitHub = "https://github.com/kamkaz12/Calc.git"
-    def absolutePathToWorkspace = pwd()
-    def absolutePathToSlnFile = absolutePathToWorkspace + "/calc.sln"
-    def absolutePathToTests = absolutePathToWorkspace + "/CalcTests1/bin/Debug/CalcTests1.dll"
-
-    stage('Connect to GIT') {
-        git urlToGitHub
-    }
-
-    stage('Create Nuget Restore'){
-        build job: 'NugetRestore', parameters: [string(name: 'path', value: absolutePathToSlnFile)]
-    }
-
-    stage('MsBuild - Clean'){
-        build job: 'MsBuild2015', parameters: [string(name: 'path', value: absolutePathToSlnFile), string(name: 'target', value: 'Clean')]
-    }
-
-    stage('MsBuild - Build'){
-        build job: 'MsBuild2015', parameters: [string(name: 'path', value: absolutePathToSlnFile), string(name: 'target', value: 'Build')]
-    }
-
     try {
+        def urlToGitHub = "https://github.com/kamkaz12/Calc.git"
+        def absolutePathToWorkspace = pwd()
+        def absolutePathToSlnFile = absolutePathToWorkspace + "/calc.sln"
+        def absolutePathToTests = absolutePathToWorkspace + "/CalcTests1/bin/Debug/CalcTests1.dll"
+
+        stage('Connect to GIT') {
+            git urlToGitHub
+        }
+
+        stage('Create Nuget Restore'){
+            build job: 'NugetRestore', parameters: [string(name: 'path', value: absolutePathToSlnFile)]
+        }
+
+        stage('MsBuild - Clean'){
+            build job: 'MsBuild2015', parameters: [string(name: 'path', value: absolutePathToSlnFile), string(name: 'target', value: 'Clean')]
+        }
+
+        stage('MsBuild - Build'){
+            build job: 'MsBuild2015', parameters: [string(name: 'path', value: absolutePathToSlnFile), string(name: 'target', value: 'Build')]
+        }
+
         stage('Tests') {
             build job: 'VsTestConsole', parameters: [string(name: 'path', value: absolutePathToTests)]
         }
     }
+
     catch(Exception ex){
         currentBuild.result = 'FAILURE'
-
     }
+
     finally {
         stage('Clean Workspace') {
             cleanWs()
