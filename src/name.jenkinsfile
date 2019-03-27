@@ -1,7 +1,7 @@
 node {
 
     try {
-        def urlToGitHub = "https://github.com/kamkaz12/Calc.git"
+        final def urlToGitHub = "https://github.com/kamkaz12/Calc.git"
         def absolutePathToWorkspace = pwd()
         def absolutePathToSlnFile = absolutePathToWorkspace + "/calc.sln"
         def absolutePathToTests = absolutePathToWorkspace + "/CalcTests1/bin/Debug/CalcTests1.dll"
@@ -11,7 +11,7 @@ node {
         }
 
         stage('Create Nuget Restore'){
-            build job: 'NugetRestore', parameters: [String(name: 'path', value: absolutePathToSlnFile)]
+            build job: 'NugetRestore', parameters: [string(name: 'path', value: absolutePathToSlnFile)]
         }
 
        stage('MsBuild - Clean'){
