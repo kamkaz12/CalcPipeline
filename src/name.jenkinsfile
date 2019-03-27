@@ -32,8 +32,8 @@ node {
     }
 
     finally {
-        stage('Clean Workspace') {
+       /* stage('Clean Workspace') {
             cleanWs()
-        }
+        }*/
     }
 }
