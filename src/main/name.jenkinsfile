@@ -11,7 +11,7 @@ node {
         }
 
         stage('Create Nuget Restore'){
-            build job: 'NugetRestore', parameters: [string(name: 'path', value: absolutePathToSlnFile)]
+            build job: 'NugetRestore', parameters: [String(name: 'path', value: absolutePathToSlnFile)]
         }
 
        stage('MsBuild - Clean'){
